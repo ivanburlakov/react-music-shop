@@ -1,0 +1,43 @@
+.Modal {
+  position: fixed;
+  z-index: 100000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.ModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.ModalBody {
+  margin-top: 30px;
+  border-radius: 20px;
+  background: white;
+}
+
+.SuccessModalInner {
+  padding: 20px;
+  min-height: 150px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.ErrorModalInner {
+  padding: 20px;
+  min-height: 150px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+}

@@ -7,9 +7,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="213.24001"
-   height="26.693333"
-   viewBox="0 0 213.24001 26.693333"
+   width="161.75662"
+   height="22.261499"
+   viewBox="0 0 161.75662 22.261499"
    version="1.1"
    id="svg10"
    sodipodi:docname="logo.svg"
@@ -38,14 +38,14 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="986"
+     inkscape:window-height="1001"
      id="namedview12"
      showgrid="false"
-     inkscape:zoom="5.261745"
-     inkscape:cx="121.99916"
-     inkscape:cy="32.388596"
-     inkscape:window-x="-11"
-     inkscape:window-y="-11"
+     inkscape:zoom="7.4412311"
+     inkscape:cx="56.683428"
+     inkscape:cy="44.875791"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg10" />
   <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
@@ -57,7 +57,7 @@
      xml:space="preserve"
      id="flowRoot3730"
      style="font-style:normal;font-weight:normal;font-size:26.66666603px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-     transform="translate(-0.71052271,5.1747406)"><flowRegion
+     transform="translate(-5.8649256,3.6174694)"><flowRegion
        id="flowRegion3732"
        style="font-size:26.66666603px"><rect
          id="rect3734"
@@ -70,7 +70,7 @@
      xml:space="preserve"
      id="flowRoot3738"
      style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-     transform="translate(-0.71052271,5.1747406)"><flowRegion
+     transform="translate(-5.8649256,3.6174694)"><flowRegion
        id="flowRegion3740"
        style="font-size:16px"><rect
          id="rect3742"
@@ -83,7 +83,7 @@
      xml:space="preserve"
      id="flowRoot18"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-     transform="translate(-0.71052271,5.1747406)"><flowRegion
+     transform="translate(-5.8649256,3.6174694)"><flowRegion
        id="flowRegion20"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans'"><rect
          id="rect22"
@@ -92,11 +92,11 @@
          x="-12.632318"
          y="15.118591"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans'" /></flowRegion><flowPara
-       id="flowPara24"></flowPara></flowRoot>  <flowRoot
+       id="flowPara24" /></flowRoot>  <flowRoot
      xml:space="preserve"
      id="flowRoot26"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-     transform="translate(-0.71052271,5.1747406)"><flowRegion
+     transform="translate(-5.8649256,3.6174694)"><flowRegion
        id="flowRegion28"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans'"><rect
          id="rect30"
@@ -108,12 +108,12 @@
        id="flowPara32" /></flowRoot>  <text
      xml:space="preserve"
      style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-     x="-1.92"
-     y="20.293333"
+     x="-1.848"
+     y="16.6455"
      id="text36"><tspan
        sodipodi:role="line"
        id="tspan34"
-       x="-1.92"
-       y="20.293333"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:condensed;font-size:26.66666603px;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans Bold Condensed'">Papa John's Guitars</tspan></text>
+       x="-1.848"
+       y="16.6455"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;font-family:Caveat;-inkscape-font-specification:'Caveat Bold'">Papa John's Guitars</tspan></text>
 </svg>

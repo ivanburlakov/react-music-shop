@@ -1,0 +1,85 @@
+.btn {
+	margin-left: auto;
+	height: 60px;
+	font-weight: 700;
+	margin-right: 40px;
+	font-size: 1rem;
+	border-radius: 35px;
+	position: relative;
+	min-width: 10rem;
+	max-width: 90vw;
+	overflow: hidden;
+	border: 0;
+	outline:0;
+	cursor: pointer;
+	transition: all 330ms;
+}
+.btn + .btn {
+	margin-top: 1rem;
+}
+.btn span {
+	position: relative;
+	z-index: 1;
+}
+.btn:before {
+	content: "";
+	background-color: #21d4fd;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	transform: scale(4) translateX(-100%);
+	transition: all 495ms ease-out;
+}
+.btn:hover:before, .btn:active:before {
+	transform: scale(4) translate(37%);
+}
+.btn--alpha {
+	background-color: #21d4fd;
+	color: #b721ff;
+}
+.btn--alpha:before {
+	background-color: #b721ff;
+	background-image: linear-gradient(to right, #b721ff 30%, #21d4fd 100%);
+	position: absolute;
+}
+.btn--alpha:hover, .btn--alpha:active {
+	color: #21d4fd;
+}
+.btn--beta {
+	background-color: #08aeea;
+	color: #2af598;
+}
+.btn--beta:before {
+	background-color: #2af598;
+	background-image: linear-gradient(to right, #2af598 30%, #08aeea 100%);
+	position: absolute;
+}
+.btn--beta:hover, .btn--beta:active {
+	color: #08aeea;
+}
+.btn--gamma {
+	background-color: #fee140;
+	color: #fa709a;
+}
+.btn--gamma:before {
+	background-color: #fa709a;
+	background-image: linear-gradient(to right, #fa709a 30%, #fee140 100%);
+	position: absolute;
+}
+.btn--gamma:hover, .btn--gamma:active {
+	color: #fee140;
+}
+.btn--delta {
+	background-color: #3eecac;
+	color: #ee74e1;
+}
+.btn--delta:before {
+	background-color: #ee74e1;
+	background-image: linear-gradient(to right, #ee74e1 30%, #3eecac 100%);
+	position: absolute;
+}
+.btn--delta:hover, .btn--delta:active {
+	color: #3eecac;
+}

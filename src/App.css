@@ -7,10 +7,19 @@
 body {
   background-color: #E9EBF0;
   margin: 0 auto;
+  overflow: hidden;
+}
+
+.logo {
+	padding-left: 10px;
+  padding-right: 40px;
+  min-width: 200px;
+  max-width: 200px;
 }
 
 .nav {
   display: inline-flex;
+  align-items: center;
   position: relative;
   overflow: hidden;
   width: 100%;
