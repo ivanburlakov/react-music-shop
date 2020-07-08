@@ -1,18 +1,17 @@
 .btn {
-	margin-left: auto;
+	display: none;
 	height: 60px;
 	font-weight: 700;
-	margin-right: 40px;
 	font-size: 1rem;
 	border-radius: 35px;
-	position: relative;
-	min-width: 10rem;
-	max-width: 90vw;
+	position: absolute;
+	right: 20px;
+	width: 100px;
 	overflow: hidden;
 	border: 0;
 	outline:0;
 	cursor: pointer;
-	transition: all 330ms;
+	transition: all 0.3s;
 }
 .btn + .btn {
 	margin-top: 1rem;

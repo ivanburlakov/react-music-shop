@@ -17,7 +17,7 @@ const About = () => {
     <div className="about">
       <button onClick={toggleSuccessModal}>success modal</button>
       <Modal isOpened={isSuccessModal} onClose={toggleSuccessModal}>
-        <div className="SuccessModalInner">
+          <div className="SuccessModalInner">
           <h3>Your order is accepted!</h3>
           <Lottie
             options={{
@@ -32,11 +32,11 @@ const About = () => {
             width={100}
             style={{ position: "absolute", top: "75px" }}
           />
-        </div>
+          </div>
       </Modal>
       <button onClick={toggleErrorModal}>error modal</button>
       <Modal isOpened={isErrorModal} onClose={toggleErrorModal}>
-        <div className="ErrorModalInner">
+          <div className="ErrorModalInner">
           <h3>Ooops.. Something went wrong!</h3>
           <Lottie
             options={{
@@ -51,7 +51,7 @@ const About = () => {
             width={230}
             style={{ position: "absolute", top: "12px" }}
           />
-        </div>
+          </div>
       </Modal>
     </div>
   );

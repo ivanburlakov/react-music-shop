@@ -11,7 +11,10 @@ const Panel = (props) => {
       onClose={onClose}
       motionStyle={(spring, isVisible) => ({
         opacity: spring(isVisible ? 1 : 0),
-        panelOffset: spring(isVisible ? 0 : 100),
+        panelOffset: spring(isVisible ? 0 : -100, {
+          stiffness: isVisible ? 170 : 300,
+          damping: isVisible ? 26 : 40,
+        }),
       })}
     >
       {(motion, isVisible) => (
@@ -22,7 +25,7 @@ const Panel = (props) => {
           }}
         >
           <div
-            className="Panel--overlay"
+            className="PanelOverlay"
             onClick={onClose}
             style={{
               opacity: motion.opacity,
@@ -30,9 +33,9 @@ const Panel = (props) => {
             }}
           />
           <div
-            className="Panel--body"
+            className="PanelBody"
             style={{
-              transform: `translate3d(${motion.panelOffset}%, 0, 0)`,
+              transform: `translate3d(0, ${motion.panelOffset}%, 0)`,
             }}
           >
             {children}

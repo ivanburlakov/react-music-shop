@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { NavLink } from "react-router-dom";
 
-import Panel from '../Panel/Panel.js'
+import Panel from "../Panel/Panel.js";
 
 import logo from "../../assets/logo.svg";
 
@@ -13,13 +13,13 @@ const Navigation = () => {
   const [isPanel, setPanel] = useState(false);
   const togglePanel = () => setPanel(!isPanel);
 
-  const Home = useRef(null);
+  const Products = useRef(null);
   const About = useRef(null);
   const Contacts = useRef(null);
 
   const menuItems = {
-    Home: {
-      ref: Home,
+    Products: {
+      ref: Products,
       color: "orange",
     },
     About: {
@@ -48,21 +48,32 @@ const Navigation = () => {
     });
   }
 
+  // eslint-disable-next-line
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+
   useEffect(setCurrentPage);
 
   return (
     <nav className="nav">
       <img src={logo} alt="logo" className="logo" />
       <NavLink
-        ref={Home}
+        ref={Products}
         exact
         className="nav-item"
         activeClassName="nav-item is active"
-        activeStyle={{ color: menuItems.Home.color }}
+        activeStyle={{ color: menuItems.Products.color }}
         to="/"
-        onClick={(e) => changeIndicator(e.target, menuItems.Home.color)}
+        onClick={(e) => changeIndicator(e.target, menuItems.Products.color)}
       >
-        Home
+        Products
       </NavLink>
       <NavLink
         ref={About}
@@ -87,24 +98,57 @@ const Navigation = () => {
         Contacts
       </NavLink>
       <span
+        className="indicator"
         style={{
-          position: "absolute",
           left: `${offsetLeft}px`,
           width: `${offsetWidth}px`,
           backgroundColor: `${color}`,
-          bottom: "0px",
-          height: "5px",
-          transition: ".4s",
-          zIndex: "1",
-          borderRadius: "8px 8px 0 0",
         }}
       ></span>
       <button className="btn btn--gamma" onClick={togglePanel}>
-        <span>Cart</span>
+        <span>Menu</span>
       </button>
-      <Panel isOpened={isPanel} onClose={togglePanel}>
-          <div>{"I'm a panel"}</div>
-        </Panel>
+      <Panel className="PanelInner" isOpened={isPanel} onClose={togglePanel}>
+        <NavLink
+          exact
+          className="panel-nav-item"
+          activeClassName="panel-nav-item is active"
+          activeStyle={{ color: menuItems.Products.color }}
+          to="/"
+          onClick={(e) => {
+            changeIndicator(e.target, menuItems.Products.color);
+            togglePanel();
+          }}
+        >
+          Products
+        </NavLink>
+        <NavLink
+          exact
+          className="panel-nav-item"
+          activeClassName="panel-nav-item is active"
+          activeStyle={{ color: menuItems.About.color }}
+          to="/about"
+          onClick={(e) => {
+            changeIndicator(e.target, menuItems.About.color);
+            togglePanel();
+          }}
+        >
+          About
+        </NavLink>
+        <NavLink
+          exact
+          className="panel-nav-item"
+          activeClassName="panel-nav-item is active"
+          activeStyle={{ color: menuItems.Contacts.color }}
+          to="/contact"
+          onClick={(e) => {
+            changeIndicator(e.target, menuItems.Contacts.color);
+            togglePanel();
+          }}
+        >
+          Contacts
+        </NavLink>
+      </Panel>
     </nav>
   );
 };

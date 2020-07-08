@@ -1,0 +1,11 @@
+@media (max-width: 768px) {
+  .indicator {
+    display: none;
+  }
+  .nav-item {
+    display: none;
+  }
+  .btn {
+    display: block;
+  }
+}

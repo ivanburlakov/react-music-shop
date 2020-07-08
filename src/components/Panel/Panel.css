@@ -1,26 +1,47 @@
 .Panel {
   position: fixed;
-  z-index: 1;
+  z-index: 99999;
   top: 0;
   bottom: 0;
   right: 0;
 }
 
-.Panel--overlay {
+.PanelOverlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.2);
 }
 
-.Panel--body {
+.PanelBody {
   position: fixed;
   top: 0;
-  bottom: 0;
-  right: 0;
-  padding: 20px;
+  left: 0;
   background: white;
-  width: 350px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
 }
+
+.panel-nav-item {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  color: #83818c;
+  text-decoration: none;
+  transition: .3s;
+  z-index: 1;
+  font-weight: 500;
+  position: relative;
+}
+
+panel-.nav-item:not(.is-active):hover:before {
+  opacity: 1;
+  bottom: 0;
+}
+
+.panel-nav-item:not(.is-active):hover { color: #333; }
