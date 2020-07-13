@@ -3,6 +3,7 @@ import "./App.css";
 import "./button.css";
 import "./components/Modal/Modal.css";
 import "./components/Panel/Panel.css";
+import "./components/Card/Card.css";
 import "./components/Navigation/Navigation.css";
 import "./responsive.css";
 
