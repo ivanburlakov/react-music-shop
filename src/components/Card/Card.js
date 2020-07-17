@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimateSharedLayout } from "framer-motion";
+import { motion } from "framer-motion";
 import Skeleton from "react-loading-skeleton";
 
 function ClosedCardContent({ imageVisible, title, price, src }) {
@@ -20,20 +20,15 @@ function ClosedCardContent({ imageVisible, title, price, src }) {
               ? { display: "none" }
               : {
                   position: "absolute",
-                  borderTopRightRadius: "25px",
-                  borderTopLeftRadius: "25px",
-                  borderBottomRightRadius: 0,
-                  borderBottomLeftRadius: 0,
+                  borderRadius: "25px",
                   height: "100%",
                   width: "100%",
                 }
           }
         />
         <motion.img
-          animate
-          layout
+          animate={{ opacity: imageLoaded ? 1 : 0 }}
           className="card-img"
-          data-imageloaded={imageLoaded}
           src={src}
           onLoad={handleImageLoaded}
           alt="card-img"
@@ -86,9 +81,10 @@ function ClosedCardContent({ imageVisible, title, price, src }) {
 
 export default function Card({ title, price, src }) {
   const [isOpen, setOpen] = useState(false);
-  const [imageVisible, setImage] = useState(false);
+  const [text, setText] = useState("not done");
+  // const [imageVisible, setImage] = useState(false);
 
-  function openCard() {}
+  // function openCard() {}
 
   useEffect(() => {
     isOpen && (document.body.style.overflow = "hidden");
@@ -97,26 +93,26 @@ export default function Card({ title, price, src }) {
 
   return (
     <div className="card-place">
-      <AnimateSharedLayout>
-        <motion.div
-          animate
-          layout
-          whileHover={{ scale: 1.05 }}
-          data-cardopen={isOpen}
-          transition={{ type: "spring", stiffness: 300, damping: 40 }}
-          onClick={() => {
-            setOpen(!isOpen);
-          }}
-          className="card"
-        >
-          <ClosedCardContent
-            imageVisible={imageVisible}
-            title={title}
-            price={price}
-            src={src}
-          />
-        </motion.div>
-      </AnimateSharedLayout>
+      <p style={{position: 'absolute', zIndex: 100}}>{text}</p>
+      <motion.div
+        animate
+        layout
+        onLayoutAnimationComplete={()=>{setText("done")}}
+        // whileHover={{ scale: 1.05 }}
+        data-cardopen={isOpen}
+        transition={{ type: "spring", stiffness: 300, damping: 40 }}
+        onClick={() => {
+          setOpen(!isOpen);
+        }}
+        className="card"
+      >
+        <ClosedCardContent
+          // imageVisible={imageVisible}
+          title={title}
+          price={price}
+          src={src}
+        />
+      </motion.div>
     </div>
   );
 }

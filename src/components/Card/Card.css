@@ -90,9 +90,9 @@
   /* transition: opacity 1s ease; */
 }
 
-.card-img[data-imageloaded="true"] {
+/* .card-img[data-imageloaded="true"] {
   opacity: 1;
-}
+} */
 
 .img-place {
   user-select: none;
