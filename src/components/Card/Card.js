@@ -1,40 +1,47 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Skeleton from "react-loading-skeleton";
 
-function ClosedCardContent({ imageVisible, title, price, src }) {
+function ClosedCardContent({ isVisible, title, price, src }) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   function handleImageLoaded() {
     setImageLoaded(true);
   }
-  if (imageVisible) {
-    return null;
-  }
+
   return (
-    <>
-      <div className="img-place">
-        <Skeleton
-          style={
-            imageLoaded
-              ? { display: "none" }
-              : {
-                  position: "absolute",
-                  borderRadius: "25px",
-                  height: "100%",
-                  width: "100%",
-                }
-          }
-        />
-        <motion.img
-          animate={{ opacity: imageLoaded ? 1 : 0 }}
-          className="card-img"
-          src={src}
-          onLoad={handleImageLoaded}
-          alt="card-img"
-        />
-      </div>
-    </>
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <div className="img-place">
+            <Skeleton
+              style={
+                imageLoaded
+                  ? { display: "none" }
+                  : {
+                      position: "absolute",
+                      borderTopLeftRadius: "25px",
+                      borderTopRigthRadius: "25px",
+                      height: "100%",
+                      width: "100%",
+                    }
+              }
+            />
+            <motion.img
+              animate={{ opacity: imageLoaded ? 1 : 0 }}
+              className="card-img"
+              src={src}
+              onLoad={handleImageLoaded}
+              alt="card-img"
+            />
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
@@ -81,10 +88,6 @@ function ClosedCardContent({ imageVisible, title, price, src }) {
 
 export default function Card({ title, price, src }) {
   const [isOpen, setOpen] = useState(false);
-  const [text, setText] = useState("not done");
-  // const [imageVisible, setImage] = useState(false);
-
-  // function openCard() {}
 
   useEffect(() => {
     isOpen && (document.body.style.overflow = "hidden");
@@ -93,26 +96,35 @@ export default function Card({ title, price, src }) {
 
   return (
     <div className="card-place">
-      <p style={{position: 'absolute', zIndex: 100}}>{text}</p>
-      <motion.div
-        animate
-        layout
-        onLayoutAnimationComplete={()=>{setText("done")}}
-        // whileHover={{ scale: 1.05 }}
-        data-cardopen={isOpen}
-        transition={{ type: "spring", stiffness: 300, damping: 40 }}
-        onClick={() => {
-          setOpen(!isOpen);
-        }}
-        className="card"
-      >
-        <ClosedCardContent
-          // imageVisible={imageVisible}
-          title={title}
-          price={price}
-          src={src}
-        />
-      </motion.div>
+      <div className="card-frame" data-cardopen={isOpen}>
+        <motion.div
+          className="card"
+          layout
+          animate={!isOpen ? { borderRadius: "25px" } : { borderRadius: "0px" }}
+          initial={!isOpen ? { borderRadius: "25px" } : { borderRadius: "0px" }}
+          onAnimationStart={()=>{console.log("started")}}
+          onAnimationComplete={()=>{console.log("ended")}}
+          whileHover={
+            !isOpen
+              ? {
+                  scale: 1.05,
+                  boxShadow: "0 10px 20px rgba(0, 0, 0, .15)",
+                }
+              : {}
+          }
+          transition={{ type: "spring", stiffness: 200, damping: 40 }}
+          onClick={() => {
+            setOpen(!isOpen);
+          }}
+        >
+          <ClosedCardContent
+            isVisible={!isOpen}
+            title={title}
+            price={price}
+            src={src}
+          />
+        </motion.div>
+      </div>
     </div>
   );
 }
