@@ -1,4 +1,4 @@
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .indicator {
     display: none;
   }
@@ -7,5 +7,24 @@
   }
   .btn {
     display: block;
+  }
+
+  .card-section {
+    grid-template-columns: repeat(2, 42%);
+  }
+  
+  .card:hover {
+    transform: inherit;
+    box-shadow: inherit;
+  }
+}
+
+@media (max-width: 576px) {
+  .img-place[data-cardopen="true"] {
+    padding-top: 100%;
+    width: 100%;
+  }
+  .card-section {
+    grid-template-columns: repeat(1, 90%);
   }
 }
