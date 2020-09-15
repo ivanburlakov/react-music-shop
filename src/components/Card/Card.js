@@ -6,25 +6,25 @@ import Shiitake from "shiitake";
 export default function Card({ title, price, src }) {
   const [openCalled, setOpenCalled] = useState(false);
   const [isOpen, setOpen] = useState(false);
-  const [isClosed, setClosed] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [zIndex, setIndex] = useState(0);
 
   function handleImageLoaded() {
     setImageLoaded(true);
   }
 
   function handleOpenCalled() {
-    setClosed(false);
     setOpen(false);
+    !openCalled && setIndex(2);
     setOpenCalled(!openCalled);
   }
 
   function handleCardLayout() {
     if (!openCalled) {
-      setClosed(true);
+      setIndex(0);
       setOpen(false);
     } else {
-      setClosed(false);
+      setIndex(1);
       setOpen(true);
     }
   }
@@ -37,7 +37,7 @@ export default function Card({ title, price, src }) {
   return (
     <div className="card-place">
       <div
-        style={{ zIndex: isClosed ? 0 : 1 }}
+        style={{ zIndex: zIndex }}
         className="card-frame"
         data-cardopen={openCalled}
       >
@@ -51,20 +51,13 @@ export default function Card({ title, price, src }) {
           initial={{
             borderRadius: !openCalled ? 25 : 0,
           }}
-          // whileHover={
-          //   !openCalled
-          //     ? {
-          //         scale: 1.05,
-          //         boxShadow: "0 10px 20px rgba(0, 0, 0, .15)",
-          //       }
-          //     : {}
-          // }
           transition={spring}
           onClick={handleOpenCalled}
         >
           <div data-cardopen={openCalled} className="card-content-frame">
             <div className="card-content">
               <motion.div
+                animate={{ borderRadius: !openCalled ? 0 : 25 }}
                 layout
                 transition={spring}
                 data-cardopen={openCalled}
@@ -100,17 +93,25 @@ export default function Card({ title, price, src }) {
               >
                 <Shiitake
                   className="title"
-                  lines={!openCalled ? 2 : 5}
+                  lines={!openCalled ? 2 : 3}
                   tagName="h3"
                 >
-                  They do, on the other hand, eat large numbers of rodents. They
-                  can be found all across the world except for Australia,
-                  Antarctica, and the neighbouring islands. They do, on the
-                  other hand, eat large numbers of rodents. They can be found
-                  all across the world except for Australia, Antarctica, and the
-                  neighbouring islands.
+                  {title}
                 </Shiitake>
-                <h3 className="price">1$</h3>
+                <div className="main-price">
+                  <h3 className="price">{price}$</h3>
+                  {/* <motion.button
+                    layout="position"
+                    className="buy"
+                    transition={spring}
+
+                    // onClick={(e) => {
+                    //   e.stopPropagation();
+                    // }}
+                  >
+                    <span>Buy</span>
+                  </motion.button> */}
+                </div>
               </motion.div>
               {isOpen && (
                 <motion.p
@@ -119,31 +120,6 @@ export default function Card({ title, price, src }) {
                   className="main-body"
                   transition={spring}
                 >
-                  <div className="button-container">
-                    <motion.button
-                      className="buy"
-                      animate={{ scale: 1 }}
-                      initial={{ scale: 0.7 }}
-                      whileHover={{
-                        scale: 1.2,
-                      }}
-                      onClick={() => {}}
-                    >
-                      <span>Buy</span>
-                    </motion.button>
-                    <motion.button
-                      className="buy"
-                      animate={{ scale: 1 }}
-                      initial={{ scale: 0.7 }}
-                      whileHover={{
-                        scale: 1.2,
-                      }}
-                      transition={{ delay: 0.1 }}
-                      onClick={() => {}}
-                    >
-                      <span>Add to cart</span>
-                    </motion.button>
-                  </div>
                   <span className="desc">{sampledesc}</span>
                 </motion.p>
               )}
@@ -159,8 +135,6 @@ const spring = {
   type: "spring",
   stiffness: 200,
   damping: 40,
-  restSpeed: 1,
-  restDelta: 1,
 };
 
 const sampledesc = `A weasel /ˈwiːzəl/ is a mammal of the genus Mustela of the

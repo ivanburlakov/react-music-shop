@@ -23,12 +23,12 @@ const Products = () => {
   return (
     <div className="products">
       <section id="products-section" className="card-section">
-        <Card title="Fender" price="1" src={srcs2[5]} />
-        <Card title="Fender" price="1" src={srcs[0]} />
-        <Card title="Fender" price="1" src={srcs[4]} />
-        <Card title="Fender" price="1" src={srcs[1]} />
-        <Card title="Fender" price="1" src={srcs[2]} />
-        <Card title="Fender" price="1" src={srcs[3]} />
+        <Card title="Telecaster" price="1" src={"/images/guitar1.jpg"} />
+        <Card title="Fender American Special Stratocaster MN Elitg Deluxe" price="1" src={"/images/guitar2.jpg"} />
+        <Card title="Martin" price="1" src={"/images/guitar3.jpg"} />
+        <Card title="Ukulele" price="1" src={"/images/guitar4.jpg"} />
+        <Card title="PRS Custom 22" price="1" src={"/images/guitar5.jpg"} />
+        <Card title="Yamaha Acoustic" price="1" src={"/images/guitar6.jpg"} />
       </section>
     </div>
   );
