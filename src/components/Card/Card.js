@@ -58,7 +58,7 @@ export default function Card({ title, price, src }) {
             <div className="card-content">
               <motion.div
                 animate={{ borderRadius: !openCalled ? 0 : 25 }}
-                layout
+                layout="position"
                 transition={spring}
                 data-cardopen={openCalled}
                 className="img-place"

@@ -34,4 +34,10 @@
   .card-section {
     grid-template-columns: repeat(1, 90%);
   }
+
+  .card-content-frame {
+    overflow: hidden;
+    height: 100%;
+    width: 100vw;
+  }
 }
