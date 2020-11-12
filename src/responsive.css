@@ -30,7 +30,7 @@
   .img-place[data-cardopen="true"] {
     padding-top: 100%;
     width: 100%;
-    margin-top: inherit;
+    margin-top: 80px;
     margin-left: inherit;
     margin-bottom: inherit;
   }

@@ -64,7 +64,7 @@
 }
 
 .card-section {
-  margin-top: 30px;
+  margin-top: 110px;
   /* padding-bottom: 30px; */
   align-items: start;
   display: grid;
@@ -152,7 +152,7 @@
 .img-place[data-cardopen="true"] {
   width: 260px;
   padding-top: 260px;
-  margin-top: 14px;
+  margin-top: 80px;
   margin-left: 14px;
 }
 
