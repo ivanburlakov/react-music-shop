@@ -1,11 +1,14 @@
 import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { NavLink } from "react-router-dom";
+import {useViewportScroll} from "framer-motion";
 
 import Panel from "../Panel/Panel.js";
 
 import logo from "../../assets/logo.svg";
 
 const Navigation = () => {
+  const { scrollY } = useViewportScroll();
+
   const [offsetWidth, setWidth] = useState(null);
   const [offsetLeft, setLeft] = useState(null);
   const [color, setColor] = useState(null);
@@ -36,6 +39,8 @@ const Navigation = () => {
     setWidth(e.offsetWidth);
     setLeft(e.offsetLeft);
     setColor(color);
+    
+    console.log(scrollY);
   }
 
   function setCurrentPage() {

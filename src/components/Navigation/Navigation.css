@@ -15,9 +15,10 @@
 
 .nav {
   z-index: 100;
+  position: fixed;
+  top: 0;
   display: inline-flex;
   align-items: center;
-  position: relative;
   width: 100%;
   background-color: #fff;
 }

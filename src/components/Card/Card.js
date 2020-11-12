@@ -6,6 +6,7 @@ import Shiitake from "shiitake";
 
 export default function Card({ id, isSelected, title, price, image }) {
   // const [openCalled, setOpenCalled] = useState(false);
+
   const [isOpen, setOpen] = useState(false);
   const [zIndex, setIndex] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
