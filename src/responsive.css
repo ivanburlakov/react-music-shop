@@ -21,7 +21,10 @@
 
 @media (max-width: 500px) {
   .img-place {
-    overflow: visible;
+    overflow: hidden;
+    padding-top: 100vw;
+    width: 100vw;
+    margin-top: -10%;
   }
 
   .img-place[data-cardopen="true"] {
@@ -35,9 +38,9 @@
     grid-template-columns: repeat(1, 90%);
   }
 
-  .card-content-frame {
+  /* .card-content-frame {
     overflow: hidden;
     height: 100%;
     width: 100vw;
-  }
+  } */
 }

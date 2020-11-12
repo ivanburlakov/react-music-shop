@@ -1,66 +1,66 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Skeleton from "react-loading-skeleton";
 import Shiitake from "shiitake";
 
-export default function Card({ title, price, src }) {
-  const [openCalled, setOpenCalled] = useState(false);
+export default function Card({ id, isSelected, title, price, image }) {
+  // const [openCalled, setOpenCalled] = useState(false);
   const [isOpen, setOpen] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
   const [zIndex, setIndex] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // function cancel(event) {
+  //   event.stopPropagation();
+  //   event.nativeEvent.stopImmediatePropagation();
+  // }
 
   function handleImageLoaded() {
     setImageLoaded(true);
   }
 
-  function handleOpenCalled() {
-    setOpen(false);
-    !openCalled && setIndex(2);
-    setOpenCalled(!openCalled);
-  }
-
   function handleCardLayout() {
-    if (!openCalled) {
-      setIndex(0);
+    if (!isSelected) {
       setOpen(false);
+      setIndex(0);
     } else {
-      setIndex(1);
       setOpen(true);
     }
   }
 
   useEffect(() => {
-    openCalled && (document.body.style.overflow = "hidden");
-    !openCalled && (document.body.style.overflow = "unset");
-  }, [openCalled]);
+    isSelected && (document.body.style.overflow = "hidden");
+    isSelected && setIndex(2);
+    !isSelected && (document.body.style.overflow = "unset");
+  }, [isSelected]);
 
   return (
-    <div className="card-place">
+    <li className="card-place">
       <div
         style={{ zIndex: zIndex }}
         className="card-frame"
-        data-cardopen={openCalled}
+        data-cardopen={isSelected}
       >
         <motion.div
           className="card"
           layout
           onLayoutAnimationComplete={handleCardLayout}
           animate={{
-            borderRadius: !openCalled ? 25 : 0,
+            borderRadius: !isSelected ? 25 : 0,
           }}
           initial={{
-            borderRadius: !openCalled ? 25 : 0,
+            borderRadius: !isSelected ? 25 : 0,
           }}
           transition={spring}
-          onClick={handleOpenCalled}
+          // onClick={handleOpenCalled}
         >
-          <div data-cardopen={openCalled} className="card-content-frame">
+          <div data-cardopen={isSelected} className="card-content-frame">
             <div className="card-content">
               <motion.div
-                animate={{ borderRadius: !openCalled ? 0 : 25 }}
+                // animate={{ borderRadius: !openCalled ? 0 : 25 }}
                 layout="position"
                 transition={spring}
-                data-cardopen={openCalled}
+                data-cardopen={isSelected}
                 className="img-place"
               >
                 <Skeleton
@@ -81,7 +81,7 @@ export default function Card({ title, price, src }) {
                   }}
                   transition={spring}
                   className="card-img"
-                  src={src}
+                  src={image}
                   onLoad={handleImageLoaded}
                   alt="card-img"
                 />
@@ -93,7 +93,7 @@ export default function Card({ title, price, src }) {
               >
                 <Shiitake
                   className="title"
-                  lines={!openCalled ? 2 : 3}
+                  lines={!isSelected ? 2 : 3}
                   tagName="h3"
                 >
                   {title}
@@ -104,12 +104,9 @@ export default function Card({ title, price, src }) {
                     layout="position"
                     className="buy"
                     transition={spring}
-
-                    // onClick={(e) => {
-                    //   e.stopPropagation();
-                    // }}
+                    onClick={cancel}
                   >
-                    <span>Buy</span>
+                    <span>Add</span>
                   </motion.button> */}
                 </div>
               </motion.div>
@@ -127,7 +124,10 @@ export default function Card({ title, price, src }) {
           </div>
         </motion.div>
       </div>
-    </div>
+      {!isSelected && (
+        <Link to={`/products/${id}`} className={`card-open-link`} />
+      )}
+    </li>
   );
 }
 

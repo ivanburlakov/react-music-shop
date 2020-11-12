@@ -65,19 +65,19 @@ const Navigation = () => {
     <nav className="nav">
       <img src={logo} alt="logo" className="logo" />
       <NavLink
-        ref={Products}
         exact
+        ref={Products}
         className="nav-item"
         activeClassName="nav-item is active"
         activeStyle={{ color: menuItems.Products.color }}
-        to="/"
+        to="/products"
         onClick={(e) => changeIndicator(e.target, menuItems.Products.color)}
       >
         Products
       </NavLink>
       <NavLink
-        ref={About}
         exact
+        ref={About}
         className="nav-item"
         activeClassName="nav-item is active"
         activeStyle={{ color: menuItems.About.color }}
@@ -87,8 +87,8 @@ const Navigation = () => {
         About
       </NavLink>
       <NavLink
-        ref={Contacts}
         exact
+        ref={Contacts}
         className="nav-item"
         activeClassName="nav-item is active"
         activeStyle={{ color: menuItems.Contacts.color }}
@@ -114,7 +114,7 @@ const Navigation = () => {
           className="panel-nav-item"
           activeClassName="panel-nav-item is active"
           activeStyle={{ color: menuItems.Products.color }}
-          to="/"
+          to="/products"
           onClick={(e) => {
             changeIndicator(e.target, menuItems.Products.color);
             togglePanel();

@@ -11,6 +11,7 @@
     "react-mortal": "^3.3.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-scrollbars-custom": "^4.0.25",
     "shiitake": "^3.0.2"
   },
   "scripts": {
