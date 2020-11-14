@@ -64,8 +64,7 @@
 }
 
 .card-section {
-  margin-top: 110px;
-  /* padding-bottom: 30px; */
+  margin-top: 30px;
   align-items: start;
   display: grid;
   grid-gap: 30px;
@@ -133,9 +132,9 @@
   border-radius: 0px;
 }
 
-.card-img[data-cardopen="true"] {
+/* .card-img[data-cardopen="true"] {
   border-radius: 25px;
-}
+} */
 
 /* .card-img[data-imageloaded="true"] {
   opacity: 1;
@@ -152,7 +151,7 @@
 .img-place[data-cardopen="true"] {
   width: 260px;
   padding-top: 260px;
-  margin-top: 80px;
+  margin-top: 14px;
   margin-left: 14px;
 }
 

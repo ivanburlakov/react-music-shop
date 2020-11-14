@@ -30,9 +30,14 @@ export default function Card({ id, isSelected, title, price, image }) {
   }
 
   useEffect(() => {
-    isSelected && (document.body.style.overflow = "hidden");
-    isSelected && setIndex(2);
-    !isSelected && (document.body.style.overflow = "unset");
+    if (isSelected) {
+      setIndex(2);
+      // document.body.style.overflow = "hidden";
+    } else {
+      // document.body.style.overflow = "unset";
+      setOpen(false);
+      setIndex(1);
+    }
   }, [isSelected]);
 
   return (
@@ -126,7 +131,7 @@ export default function Card({ id, isSelected, title, price, image }) {
         </motion.div>
       </div>
       {!isSelected && (
-        <Link to={`/products/${id}`} className={`card-open-link`} />
+        <Link to={`${window.location.pathname}/${id}`} className={`card-open-link`} />
       )}
     </li>
   );
@@ -134,7 +139,7 @@ export default function Card({ id, isSelected, title, price, image }) {
 
 const spring = {
   type: "spring",
-  stiffness: 200,
+  stiffness: 250,
   damping: 40,
 };
 

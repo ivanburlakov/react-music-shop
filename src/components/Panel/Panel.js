@@ -1,49 +1,48 @@
 import React from "react";
 
-import Mortal from "react-mortal";
+import { Portal } from "react-portal";
+import { motion } from "framer-motion";
 
 const Panel = (props) => {
-  const { isOpened, onClose, children } = props;
+  const { isOpen, onClose, children } = props;
 
   return (
-    <Mortal
-      isOpened={isOpened}
-      onClose={onClose}
-      motionStyle={(spring, isVisible) => ({
-        opacity: spring(isVisible ? 1 : 0),
-        panelOffset: spring(isVisible ? 0 : -100, {
-          stiffness: isVisible ? 170 : 300,
-          damping: isVisible ? 26 : 40,
-        }),
-      })}
-    >
-      {(motion, isVisible) => (
-        <div
-          className="Panel"
+    <Portal node={document && document.getElementById("modal")}>
+      <div
+        className="Panel"
+        style={{
+          pointerEvents: isOpen ? "auto" : "none",
+        }}
+      >
+        <motion.div
+          className="PanelOverlay"
+          onClick={onClose}
+          initial={{opacity: 0 }}
+          animate={{opacity: isOpen ? 1 : 0 }}
+          transition={spring}
           style={{
-            pointerEvents: isVisible ? "auto" : "none",
+            pointerEvents: isOpen ? "auto" : "none",
           }}
+        />
+        <motion.div
+          className="PanelBody"
+          initial={{transform: `translate3d(0, -100%, 0)`}}
+          animate={{
+            transform: isOpen ? `translate3d(0, 0%, 0)` : `translate3d(0, -100%, 0)`,
+          }}
+          transition={spring}
         >
-          <div
-            className="PanelOverlay"
-            onClick={onClose}
-            style={{
-              opacity: motion.opacity,
-              pointerEvents: isVisible ? "auto" : "none",
-            }}
-          />
-          <div
-            className="PanelBody"
-            style={{
-              transform: `translate3d(0, ${motion.panelOffset}%, 0)`,
-            }}
-          >
-            {children}
-          </div>
-        </div>
-      )}
-    </Mortal>
+          {children}
+        </motion.div>
+      </div>
+    </Portal>
   );
+};
+
+const spring = {
+  type: "spring",
+  stiffness: 300,
+  damping: 40,
 };
 
 export default Panel;

@@ -16,7 +16,7 @@ const About = () => {
   return (
     <div className="about">
       <button onClick={toggleSuccessModal}>success modal</button>
-      <Modal isOpened={isSuccessModal} onClose={toggleSuccessModal}>
+      <Modal isOpen={isSuccessModal} onClose={toggleSuccessModal}>
           <div className="SuccessModalInner">
           <h3>Your order is accepted!</h3>
           <Lottie
@@ -35,7 +35,7 @@ const About = () => {
           </div>
       </Modal>
       <button onClick={toggleErrorModal}>error modal</button>
-      <Modal isOpened={isErrorModal} onClose={toggleErrorModal}>
+      <Modal isOpen={isErrorModal} onClose={toggleErrorModal}>
           <div className="ErrorModalInner">
           <h3>Ooops.. Something went wrong!</h3>
           <Lottie
