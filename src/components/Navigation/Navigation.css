@@ -5,20 +5,10 @@
   height: 80px;
 }
 
-.indicator {
-  position: absolute;
-  bottom: 0px;
-  height: 5px;
-  transition: 0.4s;
-  border-radius: 8px 8px 0 0;
-}
-
 .nav {
-  z-index: 100;
-  position: fixed;
-  top: 0;
   display: inline-flex;
   align-items: center;
+  position: relative;
   width: 100%;
   background-color: #fff;
 }
@@ -30,11 +20,12 @@
   padding-top: 30px;
   padding-bottom: 30px;
   text-decoration: none;
-  transition: 0.3s;
   margin: 0 6px;
   font-weight: 500;
   position: relative;
 }
+
+.nav-item:not(.is-active):hover { color: #333; }
 
 .nav-item:before {
   content: "";
@@ -54,6 +45,13 @@
   bottom: 0;
 }
 
-.nav-item:not(.is-active):hover {
-  color: #333;
+.nav-line {
+  margin: auto;
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  border-radius: 3px;
+  height: 5px;
+  border-radius: 8px 8px 0 0;
 }

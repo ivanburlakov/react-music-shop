@@ -1,161 +1,102 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
-import { NavLink } from "react-router-dom";
-import {useViewportScroll} from "framer-motion";
+import React, { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { motion, AnimateSharedLayout } from 'framer-motion';
 
-import Panel from "../Panel/Panel.js";
+import Panel from '../Panel/Panel';
 
-import logo from "../../assets/logo.svg";
+import logo from '../../assets/logo.svg';
 
 const Navigation = () => {
-  const { scrollY } = useViewportScroll();
-
-  const [offsetWidth, setWidth] = useState(null);
-  const [offsetLeft, setLeft] = useState(null);
-  const [color, setColor] = useState(null);
+  // const { scrollY } = useViewportScroll();
 
   const [isPanel, setPanel] = useState(false);
   const togglePanel = () => setPanel(!isPanel);
 
-  const Products = useRef(null);
-  const About = useRef(null);
-  const Contacts = useRef(null);
-
-  const menuItems = {
-    Products: {
-      ref: Products,
-      color: "orange",
+  const menuItems = [
+    {
+      name: 'Home',
+      color: 'red',
     },
-    About: {
-      ref: About,
-      color: "green",
+    {
+      name: 'Products',
+      color: 'orange',
     },
-    Contacts: {
-      ref: Contacts,
-      color: "rebeccapurple",
+    {
+      name: 'About',
+      color: 'green',
     },
-  };
+    {
+      name: 'Contact',
+      color: 'rebeccapurple',
+    },
+  ];
 
-  function changeIndicator(e, color) {
-    setWidth(e.offsetWidth);
-    setLeft(e.offsetLeft);
-    setColor(color);
-    
-    console.log(scrollY);
-  }
-
-  function setCurrentPage() {
-    Object.keys(menuItems).forEach((key) => {
-      if (
-        menuItems[key].ref.current.className === "nav-item nav-item is active"
-      ) {
-        changeIndicator(menuItems[key].ref.current, menuItems[key].color);
-      }
-    });
-  }
-
-  // eslint-disable-next-line
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-
-  useEffect(setCurrentPage);
+  const location = useLocation();
 
   return (
-    <nav className="nav">
-      <img src={logo} alt="logo" className="logo" />
-      <NavLink
-        exact
-        ref={Products}
-        className="nav-item"
-        activeClassName="nav-item is active"
-        activeStyle={{ color: menuItems.Products.color }}
-        to="/products"
-        onClick={(e) => changeIndicator(e.target, menuItems.Products.color)}
-      >
-        Products
-      </NavLink>
-      <NavLink
-        exact
-        ref={About}
-        className="nav-item"
-        activeClassName="nav-item is active"
-        activeStyle={{ color: menuItems.About.color }}
-        to="/about"
-        onClick={(e) => changeIndicator(e.target, menuItems.About.color)}
-      >
-        About
-      </NavLink>
-      <NavLink
-        exact
-        ref={Contacts}
-        className="nav-item"
-        activeClassName="nav-item is active"
-        activeStyle={{ color: menuItems.Contacts.color }}
-        to="/contact"
-        onClick={(e) => changeIndicator(e.target, menuItems.Contacts.color)}
-      >
-        Contacts
-      </NavLink>
-      <span
-        className="indicator"
-        style={{
-          left: `${offsetLeft}px`,
-          width: `${offsetWidth}px`,
-          backgroundColor: `${color}`,
-        }}
-      ></span>
-      <button className="btn btn--gamma" onClick={togglePanel}>
-        <span>Menu</span>
-      </button>
-      <Panel className="PanelInner" isOpened={isPanel} onClose={togglePanel}>
-        <NavLink
-          exact
-          className="panel-nav-item"
-          activeClassName="panel-nav-item is active"
-          activeStyle={{ color: menuItems.Products.color }}
-          to="/products"
-          onClick={(e) => {
-            changeIndicator(e.target, menuItems.Products.color);
-            togglePanel();
-          }}
-        >
-          Products
-        </NavLink>
-        <NavLink
-          exact
-          className="panel-nav-item"
-          activeClassName="panel-nav-item is active"
-          activeStyle={{ color: menuItems.About.color }}
-          to="/about"
-          onClick={(e) => {
-            changeIndicator(e.target, menuItems.About.color);
-            togglePanel();
-          }}
-        >
-          About
-        </NavLink>
-        <NavLink
-          exact
-          className="panel-nav-item"
-          activeClassName="panel-nav-item is active"
-          activeStyle={{ color: menuItems.Contacts.color }}
-          to="/contact"
-          onClick={(e) => {
-            changeIndicator(e.target, menuItems.Contacts.color);
-            togglePanel();
-          }}
-        >
-          Contacts
-        </NavLink>
-      </Panel>
-    </nav>
+    <AnimateSharedLayout>
+      <nav className="nav">
+        <img src={logo} alt="logo" className="logo" />
+        {menuItems.map((item) => (
+          <Item
+            name={item.name}
+            key={item.color}
+            color={item.color}
+            isSelected={`/${item.name.toLowerCase()}` === location.pathname}
+            // isSelected={`/${item.name.toLowerCase()}` === location.pathname.match(new RegExp(`^/${item.name.toLowerCase()}`))}
+          />
+        ))}
+        <button className="btn btn--gamma" type="button" onClick={togglePanel}>
+          <span>Menu</span>
+        </button>
+        <Panel className="PanelOuter" isOpen={isPanel} onClose={togglePanel}>
+          {menuItems.map((item) => (
+            <PanelItem
+              name={item.name}
+              key={item.color}
+              color={item.color}
+              onClick={togglePanel}
+              isSelected={`/${item.name.toLowerCase()}` === location.pathname}
+            />
+          ))}
+        </Panel>
+      </nav>
+    </AnimateSharedLayout>
   );
 };
+
+function Item({ name, color, isSelected }) {
+  return (
+    <NavLink
+      className="nav-item"
+      activeClassName="nav-item is active"
+      activeStyle={{ color }}
+      to={`/${name.toLowerCase()}`}
+    >
+      {name}
+      {isSelected && (
+        <motion.div
+          layoutId="nav-line"
+          className="nav-line"
+          animate={{ backgroundColor: color }}
+        />
+      )}
+    </NavLink>
+  );
+}
+
+function PanelItem({ name, color, onClick }) {
+  return (
+    <NavLink
+      className="panel-nav-item"
+      activeClassName="panel-nav-item is active"
+      activeStyle={{ color }}
+      onClick={onClick}
+      to={`/${name.toLowerCase()}`}
+    >
+      {name}
+    </NavLink>
+  );
+}
 
 export default Navigation;

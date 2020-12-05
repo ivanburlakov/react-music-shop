@@ -39,9 +39,4 @@
   position: relative;
 }
 
-panel-.nav-item:not(.is-active):hover:before {
-  opacity: 1;
-  bottom: 0;
-}
-
 .panel-nav-item:not(.is-active):hover { color: #333; }

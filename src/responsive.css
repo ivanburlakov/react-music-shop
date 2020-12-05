@@ -1,10 +1,8 @@
 @media (max-width: 900px) {
-  .indicator {
-    display: none;
-  }
   .nav-item {
     display: none;
   }
+
   .btn {
     display: block;
   }
@@ -30,7 +28,7 @@
   .img-place[data-cardopen="true"] {
     padding-top: 100%;
     width: 100%;
-    margin-top: 80px;
+    margin-top: inherit;
     margin-left: inherit;
     margin-bottom: inherit;
   }

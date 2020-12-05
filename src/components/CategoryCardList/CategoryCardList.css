@@ -1,0 +1,73 @@
+.category-title-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center;
+  width: 220px;
+  height: 100px;
+}
+
+.category-dimm {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.category-title {
+  position: relative;
+  color: white;
+  text-align: center;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.category-section {
+  margin-top: 30px;
+  align-items: start;
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(2, 260px);
+  justify-content: center;
+}
+
+.category-place {
+  position: relative;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center;
+  width: 100%;
+  padding-top: 120px;
+  background-color: white;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.category-img {
+  position: absolute;
+  top: 0;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.category-img-place {
+  user-select: none;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}

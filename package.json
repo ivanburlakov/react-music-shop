@@ -1,14 +1,14 @@
 {
   "name": "music-shop",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "private": true,
   "dependencies": {
-    "framer-motion": "2.4.3",
+    "framer-motion": "^2.9.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-loading-skeleton": "^2.1.1",
     "react-lottie": "^1.2.3",
-    "react-mortal": "^3.3.0",
+    "react-portal": "^4.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-scrollbars-custom": "^4.0.25",
@@ -18,7 +18,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint \"**/*.js\"",
+    "pretify": "prettier --write \"**/*.js\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,5 +36,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.2.1"
   }
 }
