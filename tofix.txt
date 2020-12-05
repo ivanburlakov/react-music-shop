@@ -1,1 +1,0 @@
-When you click to open card and when it is not fully open you close it and open another card - visual bug

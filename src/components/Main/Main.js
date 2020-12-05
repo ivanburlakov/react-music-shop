@@ -1,22 +1,23 @@
-import React from "react";
-// eslint-disable-next-line
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 // import Products from "../../pages/Products.js";
-import Home from "../../pages/Home.js";
-import Contacts from "../../pages/Contacts.js";
-import About from "../../pages/About.js";
-import CardList from "../../components/CardList/CardList.js";
+import Home from '../../pages/Home';
+import Contacts from '../../pages/Contacts';
+import About from '../../pages/About';
+import CardList from '../CardList/CardList';
 
 const Main = () => (
-  <>
-    <Route exact path="/" component={Home}>
-      <Redirect to="/products" />
+  <Switch>
+    <Route exact path="/">
+      <Redirect to="/home" />
     </Route>
-    <Route path={["/products/:id", "/products"]} component={CardList} />
-    <Route path="/about" component={About}></Route>
-    <Route path="/contact" component={Contacts}></Route>
-  </>
+    <Route path="/home" component={Home} />
+    {/* <Route path='/products' component={Products} /> */}
+    <Route path={['/products/:id', '/products']} component={CardList} />
+    <Route path="/about" component={About} />
+    <Route path="/contact" component={Contacts} />
+  </Switch>
 );
 
 export default Main;

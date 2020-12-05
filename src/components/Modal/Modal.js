@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import { Portal } from "react-portal";
-import { motion, AnimatePresence } from "framer-motion";
+import { Portal } from 'react-portal';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Modal = (props) => {
   const { isOpen, onClose, children } = props;
 
   const spring = {
-    type: "spring",
+    type: 'spring',
     stiffness: isOpen ? 100 : 300,
     damping: isOpen ? 10 : 40,
   };
@@ -15,10 +15,8 @@ const Modal = (props) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <Portal node={document && document.getElementById("modal")}>
-          <div
-            className="Modal"
-          >
+        <Portal node={document && document.getElementById('modal')}>
+          <div className="Modal">
             <motion.div
               className="ModalOverlay"
               onClick={onClose}

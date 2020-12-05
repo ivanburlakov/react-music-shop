@@ -1,11 +1,11 @@
-import React from "react";
-import { BrowserRouter as Route } from "react-router-dom";
-import CardList from "../components/CardList/CardList.js";
+import React from 'react';
+// import { Route } from "react-router-dom";
+
+// import CardList from "../components/CardList/CardList.js";
+import CategoryCardList from '../components/CategoryCardList/CategoryCardList';
 
 const Products = () => {
-  return (
-    // <Route exact path={["/:id", "/"]} component={CardList} />
-  );
+  return <CategoryCardList />;
 };
 
 export default Products;

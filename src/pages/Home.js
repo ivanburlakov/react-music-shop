@@ -1,9 +1,7 @@
-import React from "react";
+import React from 'react';
 
-const Home = () => (
-  <div>
-    <h1>Home</h1>
-  </div>
-);
+// import CategoryCardList from '../components/CategoryCardList/CategoryCardList.js';
+
+const Home = () => <div />;
 
 export default Home;
