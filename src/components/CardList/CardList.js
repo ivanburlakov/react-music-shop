@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Card from './Card';
 
@@ -110,21 +110,27 @@ const сardData = [
   },
 ];
 
-const CardList = ({ match, history }) => (
-  // <Scrollbar
-  //   style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}
-  // >
-  <ul className="card-section">
-    {сardData.map((card) => (
-      <Card
-        key={card.id}
-        isSelected={match.params.id === card.id}
-        history={history}
-        {...card}
-      />
-    ))}
-  </ul>
-  // </Scrollbar>
-);
+const CardList = ({ match, history }) => {
+  useEffect(() => {
+    const { id } = match.params;
+    const exists = сardData.find(el => el.id === id);
+    if (id && !exists) {
+      history.push('/404');
+    }
+  }, [match]);
+
+  return (
+    <ul className="card-section">
+      {сardData.map(card => (
+        <Card
+          key={card.id}
+          isSelected={match.params.id === card.id}
+          history={history}
+          {...card}
+        />
+      ))}
+    </ul>
+  );
+};
 
 export default CardList;

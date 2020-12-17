@@ -71,7 +71,7 @@ export default function Card({ id, isSelected, title, text, price, image }) {
                 data-cardopen={isSelected}
                 className="img-place"
               >
-                <Skeleton
+                {/* <Skeleton
                   style={
                     imageLoaded
                       ? { display: 'none' }
@@ -82,12 +82,8 @@ export default function Card({ id, isSelected, title, text, price, image }) {
                           width: '100%',
                         }
                   }
-                />
-                <motion.img
-                  animate={{
-                    opacity: !imageLoaded ? 0 : 1,
-                  }}
-                  transition={spring}
+                /> */}
+                <img
                   className="card-img"
                   src={image}
                   onLoad={handleImageLoaded}
