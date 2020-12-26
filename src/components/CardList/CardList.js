@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import Card from './Card';
 
@@ -75,7 +75,7 @@ const сardData = [
   },
   {
     id: 'f',
-    title: 'Fender American Special Stratocaster MN Elitg Deluxe',
+    title: 'Fender American Special Stratocaster MN Elite Deluxe',
     text: sampledesc,
     price: '1',
     image: '/images/guitar2.jpg',
@@ -89,21 +89,21 @@ const сardData = [
   },
   {
     id: 'g',
-    title: 'Martin',
+    title: 'Ukulele',
     text: sampledesc,
     price: '1',
     image: '/images/guitar4.jpg',
   },
   {
     id: 'd',
-    title: 'Ukulele',
+    title: 'PRS Custom 22',
     text: sampledesc,
     price: '1',
     image: '/images/guitar5.jpg',
   },
   {
     id: 'h',
-    title: 'PRS Custom 22',
+    title: 'Taylor',
     text: sampledesc,
     price: '1',
     image: '/images/guitar6.jpg',
