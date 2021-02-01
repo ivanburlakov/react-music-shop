@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
 import Skeleton from 'react-loading-skeleton';
 import Shiitake from 'shiitake';
+import ScrollTargetContext from '../../contexts/ScrollTargetContext';
 
 const spring = {
   type: 'spring',
@@ -15,6 +16,8 @@ export default function Card({ id, isSelected, title, text, price, image }) {
   const [isOpen, setOpen] = useState(false);
   const [zIndex, setIndex] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const scrollFrameRef = useRef();
+  const setScrollTarget = useContext(ScrollTargetContext);
 
   // const [isScale, setScale] = useState(1);
 
@@ -23,20 +26,26 @@ export default function Card({ id, isSelected, title, text, price, image }) {
   }
 
   function handleCardLayout() {
-    if (!isSelected) {
+    if (isSelected) {
+      setOpen(true);
+    } else {
       setOpen(false);
       setIndex(0);
-    } else {
-      setOpen(true);
     }
   }
 
   useEffect(() => {
     if (isSelected) {
       setIndex(2);
+      setScrollTarget(scrollFrameRef.current);
+      document.body.classList.add('noscroll-body');
+      document.documentElement.classList.add('noscroll');
     } else {
       setOpen(false);
       setIndex(1);
+      setScrollTarget('window');
+      document.body.classList.remove('noscroll-body');
+      document.documentElement.classList.remove('noscroll');
     }
   }, [isSelected]);
 
@@ -63,7 +72,11 @@ export default function Card({ id, isSelected, title, text, price, image }) {
           }}
           transition={spring}
         >
-          <div data-cardopen={isSelected} className="card-content-frame">
+          <div
+            ref={scrollFrameRef}
+            data-cardopen={isSelected}
+            className="card-content-frame"
+          >
             <div className="card-content">
               <motion.div
                 layout="position"

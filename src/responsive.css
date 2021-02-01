@@ -1,9 +1,29 @@
 @media (max-width: 900px) {
+  .card-frame[data-cardopen="true"] {
+    top: 0;
+    height: 100%;
+  }
+
+  .nav-space {
+    height: 0;
+  }
+
+  .nav {
+    position: relative;
+    height: 80px;
+    z-index: 0;
+  }
+
+  .trackY {
+    background: rgba(0,0,0,0) !important;
+    pointer-events: none;
+  }
+
   .nav-item {
     display: none;
   }
 
-  .btn {
+  .floating-button {
     display: block;
   }
 

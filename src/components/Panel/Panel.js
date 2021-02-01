@@ -9,9 +9,7 @@ const spring = {
   damping: 40,
 };
 
-const Panel = (props) => {
-  const { isOpen, onClose, children } = props;
-
+const Panel = ({ isOpen, onClose, children }) => {
   return (
     <Portal node={document && document.getElementById('modal')}>
       <div
@@ -32,11 +30,11 @@ const Panel = (props) => {
         />
         <motion.div
           className="PanelBody"
-          initial={{ transform: `translate3d(0, -100%, 0)` }}
+          initial={{ transform: `translate3d(0, +100%, 0)` }}
           animate={{
             transform: isOpen
               ? `translate3d(0, 0%, 0)`
-              : `translate3d(0, -100%, 0)`,
+              : `translate3d(0, +100%, 0)`,
           }}
           transition={spring}
         >

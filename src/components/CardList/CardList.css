@@ -65,6 +65,7 @@
 
 .card-section {
   margin-top: 30px;
+  padding-bottom: 30px;
   align-items: start;
   display: grid;
   grid-gap: 30px;
@@ -97,9 +98,9 @@
 .card-frame[data-cardopen="true"] {
   position: fixed;
   left: 0;
-  top: 0;
+  top: 80px;
   right: 0;
-  z-index: 1;
+  height: calc(100% - 80px);
 }
 
 .card-content-frame {

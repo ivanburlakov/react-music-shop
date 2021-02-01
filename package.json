@@ -5,13 +5,13 @@
   "dependencies": {
     "framer-motion": "^3.1.1",
     "react": "^16.13.1",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.13.1",
     "react-loading-skeleton": "^2.1.1",
     "react-lottie": "^1.2.3",
     "react-portal": "^4.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "react-scrollbars-custom": "^4.0.25",
     "shiitake": "^3.0.2"
   },
   "scripts": {

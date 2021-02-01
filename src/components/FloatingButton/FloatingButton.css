@@ -1,0 +1,22 @@
+.floating-button {
+  -webkit-tap-highlight-color: transparent;
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  z-index: 100;
+  bottom: 20px;
+  right: 20px;
+  height: 68px;
+  width: 68px;
+  border-radius: 34px;
+  background-color: #FC8272;
+}
+
+.floating-button-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 60%;
+  width: 60%;
+}

@@ -36,7 +36,7 @@ const categoryData = [
 
 const CategoryCardList = () => (
   <ul className="category-section">
-    {categoryData.map((category) => (
+    {categoryData.map(category => (
       <CategoryCard
         title={category.title}
         link={category.link}

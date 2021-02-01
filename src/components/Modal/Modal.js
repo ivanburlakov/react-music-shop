@@ -3,9 +3,7 @@ import React from 'react';
 import { Portal } from 'react-portal';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Modal = (props) => {
-  const { isOpen, onClose, children } = props;
-
+const Modal = ({ isOpen, onClose, children }) => {
   const spring = {
     type: 'spring',
     stiffness: isOpen ? 100 : 300,

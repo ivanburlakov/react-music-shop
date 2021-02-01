@@ -3,10 +3,11 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimateSharedLayout } from 'framer-motion';
 
 import Panel from '../Panel/Panel';
+import FloatingButton from '../FloatingButton/FloatingButton';
 
 import logo from '../../assets/logo.svg';
 
-const Navigation = () => {
+const Navigation = ({ scrollTarget }) => {
   // const { scrollY } = useViewportScroll();
 
   const [isPanel, setPanel] = useState(false);
@@ -35,9 +36,10 @@ const Navigation = () => {
 
   return (
     <AnimateSharedLayout>
+      <div className="nav-space" />
       <nav className="nav">
         <img src={logo} alt="logo" className="logo" />
-        {menuItems.map((item) => (
+        {menuItems.map(item => (
           <Item
             name={item.name}
             key={item.color}
@@ -46,11 +48,8 @@ const Navigation = () => {
             // isSelected={`/${item.name.toLowerCase()}` === location.pathname.match(new RegExp(`^/${item.name.toLowerCase()}`))}
           />
         ))}
-        <button className="btn btn--gamma" type="button" onClick={togglePanel}>
-          <span>Menu</span>
-        </button>
         <Panel className="PanelOuter" isOpen={isPanel} onClose={togglePanel}>
-          {menuItems.map((item) => (
+          {menuItems.map(item => (
             <PanelItem
               name={item.name}
               key={item.color}
@@ -61,6 +60,7 @@ const Navigation = () => {
           ))}
         </Panel>
       </nav>
+      <FloatingButton scrollTarget={scrollTarget} onClick={togglePanel} />
     </AnimateSharedLayout>
   );
 };
@@ -73,7 +73,7 @@ function Item({ name, color, isSelected }) {
       activeStyle={{ color }}
       to={`/${name.toLowerCase()}`}
     >
-      {name}
+      <span>{name}</span>
       {isSelected && (
         <motion.div
           layoutId="nav-line"
