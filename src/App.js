@@ -1,26 +1,19 @@
 import React, { useState } from 'react';
 
-import './App.css';
-import './button.css';
-import './components/Modal/Modal.css';
-import './components/Panel/Panel.css';
-import './components/CardList/CardList.css';
-import './components/CategoryCardList/CategoryCardList.css';
-import './components/Navigation/Navigation.css';
-import './components/FloatingButton/FloatingButton.css';
-import './responsive.css';
-
 import Navigation from './components/Navigation/Navigation';
 import Main from './components/Main/Main';
-import Context from './contexts/ScrollTargetContext';
+import { ScrollTargetContext, CartContext } from './contexts';
 
 const App = () => {
-  const [scrollTarget, setScrollTarget] = useState('window');
+  const [scrollTarget, setScrollTarget] = useState(null);
+  const [cart, setCart] = useState([]);
   return (
-    <Context.Provider value={setScrollTarget}>
-      <Navigation scrollTarget={scrollTarget} />
-      <Main />
-    </Context.Provider>
+    <CartContext.Provider value={{ cart, setCart }}>
+      <Navigation cart={cart} setCart={setCart} scrollTarget={scrollTarget} />
+      <ScrollTargetContext.Provider value={setScrollTarget}>
+        <Main />
+      </ScrollTargetContext.Provider>
+    </CartContext.Provider>
   );
 };
 

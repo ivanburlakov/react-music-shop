@@ -1,0 +1,47 @@
+{
+    "products": [
+        {
+          "id": "c",
+          "title": "Telecaster",
+          "text": null,
+          "price": "1",
+          "src": "/images/guitar1.jpg"
+        },
+        {
+          "id": "f",
+          "title": "Fender American Special Stratocaster MN Elite Deluxe",
+          "text": null,
+          "price": "1",
+          "src": "/images/guitar2.jpg"
+        },
+        {
+          "id": "a",
+          "title": "Martin",
+          "text": null,
+          "price": "1",
+          "src": "/images/guitar3.jpg"
+        },
+        {
+          "id": "g",
+          "title": "Ukulele",
+          "text": null,
+          "price": "1",
+          "src": "/images/guitar4.jpg"
+        },
+        {
+          "id": "d",
+          "title": "PRS Custom 22",
+          "text": null,
+          "price": "1",
+          "src": "/images/guitar5.jpg"
+        },
+        {
+          "id": "h",
+          "title": "Taylor",
+          "text": null,
+          "price": "1",
+          "src": "/images/guitar6.jpg"
+        }
+    ],
+    "sampleText": "Otters are carnivorous mammals in the subfamily Lutrinae. The 13 extant otter species are all semiaquatic, aquatic or marine, with diets based on fish and invertebrates. Lutrinae is a branch of the Mustelidae family, which also includes weasels, badgers, mink, and wolverines, among other animals. Otters have long, slim bodies and relatively short limbs. Their most striking anatomical features are the powerful webbed feet used to swim, and their seal-like abilities holding breath underwater. Most have sharp claws on their feet and all except the sea otter have long, muscular tails. The 13 species range in adult size from 0.6 to 1.8 m (2.0 to 5.9 ft) in length and 1 to 45 kg (2.2 to 99.2 lb) in weight. The Asian small-clawed otter is the smallest otter species and the giant otter and sea otter are the largest. They have very soft, insulated underfur, which is protected by an outer layer of long guard hairs. This traps a layer of air which keeps them dry, warm, and somewhat buoyant under water. Several otter species live in cold waters and have high metabolic rates to help keep them warm. European otters must eat 15% of their body weight each day, and sea otters 20 to 25%, depending on the temperature. In water as warm as 10 °C (50 °F), an otter needs to catch 100 g (3.5 oz) of fish per hour to survive. Most species hunt for three to five hours each day and nursing mothers up to eight hours each day."
+}

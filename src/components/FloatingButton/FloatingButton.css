@@ -20,3 +20,9 @@
   height: 60%;
   width: 60%;
 }
+
+@media (max-width: 900px) {
+  .floating-button {
+    display: block;
+  }
+}

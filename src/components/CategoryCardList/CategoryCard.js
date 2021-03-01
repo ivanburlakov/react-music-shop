@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import Skeleton from 'react-loading-skeleton';
 import Shiitake from 'shiitake';
 
+import './CategoryCardList.css';
+
 const spring = {
   type: 'spring',
   stiffness: 300,

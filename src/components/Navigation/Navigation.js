@@ -1,69 +1,107 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimateSharedLayout } from 'framer-motion';
 
 import Panel from '../Panel/Panel';
+import Cart from '../Cart/Cart';
 import FloatingButton from '../FloatingButton/FloatingButton';
 
+import './Navigation.css';
 import logo from '../../assets/logo.svg';
 
-const Navigation = ({ scrollTarget }) => {
+const spring = {
+  type: 'spring',
+  stiffness: 400,
+  damping: 40,
+};
+
+export default function Navigation({ scrollTarget }) {
   // const { scrollY } = useViewportScroll();
 
   const [isPanel, setPanel] = useState(false);
   const togglePanel = () => setPanel(!isPanel);
-
   const menuItems = [
     {
       name: 'Home',
-      color: 'red',
+      color: '#DB4437',
     },
     {
       name: 'Products',
-      color: 'orange',
+      color: '#F4B400',
     },
     {
       name: 'About',
-      color: 'green',
+      color: '#0F9D58',
     },
     {
       name: 'Contact',
-      color: 'rebeccapurple',
+      color: '#663399',
     },
   ];
 
   const location = useLocation();
+  const [lastYPos, setLastYPos] = useState(0);
+  const [isVisible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const target = scrollTarget || window;
+    function handleScroll() {
+      const yPos = scrollTarget ? target.scrollTop : target.scrollY;
+      const isScrollingUp = yPos < lastYPos;
+      setVisible(isScrollingUp);
+      setLastYPos(yPos);
+    }
+    target.addEventListener('scroll', handleScroll, false);
+    return () => {
+      target.removeEventListener('scroll', handleScroll, false);
+    };
+  }, [lastYPos, scrollTarget]);
+
+  useEffect(() => {
+    setVisible(true);
+  }, [scrollTarget]);
 
   return (
-    <AnimateSharedLayout>
+    <>
       <div className="nav-space" />
-      <nav className="nav">
+      <motion.nav className="nav" transition={spring}>
         <img src={logo} alt="logo" className="logo" />
-        {menuItems.map(item => (
-          <Item
-            name={item.name}
-            key={item.color}
-            color={item.color}
-            isSelected={`/${item.name.toLowerCase()}` === location.pathname}
-            // isSelected={`/${item.name.toLowerCase()}` === location.pathname.match(new RegExp(`^/${item.name.toLowerCase()}`))}
-          />
-        ))}
-        <Panel className="PanelOuter" isOpen={isPanel} onClose={togglePanel}>
+        <AnimateSharedLayout>
           {menuItems.map(item => (
-            <PanelItem
+            <Item
               name={item.name}
               key={item.color}
               color={item.color}
-              onClick={togglePanel}
-              isSelected={`/${item.name.toLowerCase()}` === location.pathname}
+              isSelected={
+                location.pathname.split('/')[1] === item.name.toLowerCase()
+              }
+              // isSelected={`/${item.name.toLowerCase()}` === location.pathname.match(new RegExp(`^/${item.name.toLowerCase()}`))}
             />
           ))}
-        </Panel>
-      </nav>
-      <FloatingButton scrollTarget={scrollTarget} onClick={togglePanel} />
-    </AnimateSharedLayout>
+        </AnimateSharedLayout>
+        <Cart />
+      </motion.nav>
+      <Panel className="PanelOuter" isOpen={isPanel} onClose={togglePanel}>
+        {menuItems.map(item => (
+          <PanelItem
+            name={item.name}
+            key={item.color}
+            color={item.color}
+            onClick={togglePanel}
+            isSelected={
+              location.pathname.split('/')[1] === item.name.toLowerCase()
+            }
+          />
+        ))}
+      </Panel>
+      <FloatingButton
+        scrollTarget={scrollTarget}
+        onClick={togglePanel}
+        isVisible={isVisible}
+      />
+    </>
   );
-};
+}
 
 function Item({ name, color, isSelected }) {
   return (
@@ -98,5 +136,3 @@ function PanelItem({ name, color, onClick }) {
     </NavLink>
   );
 }
-
-export default Navigation;

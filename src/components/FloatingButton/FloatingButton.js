@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { motion } from 'framer-motion';
 
+import './FloatingButton.css';
 import menu from '../../assets/menu.svg';
 
 const spring = {
@@ -10,42 +11,7 @@ const spring = {
   damping: 40,
 };
 
-const FloatingButton = ({ scrollTarget, onClick }) => {
-  const [lastYPos, setLastYPos] = useState(0);
-  const [isVisible, setVisible] = useState(true);
-
-  useEffect(() => {
-    let target;
-    if (scrollTarget === 'window') {
-      target = window;
-    } else {
-      target = scrollTarget;
-    }
-
-    function handleScroll() {
-      let yPos;
-      if (scrollTarget === 'window') {
-        yPos = target.scrollY;
-      } else {
-        yPos = target.scrollTop;
-      }
-      const isScrollingUp = yPos < lastYPos;
-
-      setVisible(isScrollingUp);
-      setLastYPos(yPos);
-    }
-
-    target.addEventListener('scroll', handleScroll, false);
-
-    return () => {
-      target.removeEventListener('scroll', handleScroll, false);
-    };
-  }, [lastYPos, scrollTarget]);
-
-  useEffect(() => {
-    setVisible(true);
-  }, [scrollTarget]);
-
+const FloatingButton = ({ onClick, isVisible }) => {
   return (
     <motion.div
       className="floating-button"

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-import Lottie from 'react-lottie';
+import Lottie from 'lottie-react';
+
 import SuccessLottie from '../assets/lotties/success.json';
 import ErrorLottie from '../assets/lotties/error.json';
 
@@ -14,7 +15,7 @@ const About = () => {
   const toggleErrorModal = () => setErrorModal(!isErrorModal);
 
   return (
-    <div className="about">
+    <div key="about" className="about">
       <button type="button" onClick={toggleSuccessModal}>
         success modal
       </button>
@@ -22,17 +23,15 @@ const About = () => {
         <div className="SuccessModalInner">
           <h3>Your order is accepted!</h3>
           <Lottie
-            options={{
-              loop: false,
-              autoplay: true,
-              animationData: SuccessLottie,
-              rendererSettings: {
-                preserveAspectRatio: 'xMidYMid slice',
-              },
+            animationData={SuccessLottie}
+            loop={false}
+            autoplay
+            style={{
+              position: 'absolute',
+              top: '75px',
+              height: 100,
+              width: 100,
             }}
-            height={100}
-            width={100}
-            style={{ position: 'absolute', top: '75px' }}
           />
         </div>
       </Modal>
@@ -43,17 +42,17 @@ const About = () => {
         <div className="ErrorModalInner">
           <h3>Ooops.. Something went wrong!</h3>
           <Lottie
-            options={{
-              loop: false,
-              autoplay: true,
-              animationData: ErrorLottie,
-              rendererSettings: {
-                preserveAspectRatio: 'xMidYMid slice',
-              },
-            }}
+            animationData={ErrorLottie}
+            loop={false}
+            autoplay
             height={230}
             width={230}
-            style={{ position: 'absolute', top: '12px' }}
+            style={{
+              position: 'absolute',
+              top: '12px',
+              height: 230,
+              width: 230,
+            }}
           />
         </div>
       </Modal>
