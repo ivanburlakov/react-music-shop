@@ -2,8 +2,8 @@ import React, { useEffect, useState, useContext } from 'react';
 
 import { FocusOn } from 'react-focus-on';
 import { AnimatePresence, motion } from 'framer-motion';
-import { CartContext } from '../../contexts';
 import Shiitake from 'shiitake';
+import { CartContext } from '../../contexts';
 import './Cart.css';
 
 export default function Cart() {
