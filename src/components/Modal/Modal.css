@@ -24,22 +24,8 @@
 
 .ModalBody {
   margin-top: 30px;
-  border-radius: 20px;
+  border-radius: 25px;
   background: white;
-}
-
-.SuccessModalInner {
-  padding: 20px;
-  min-height: 150px;
-  width: 300px;
-  display: flex;
-  justify-content: center;
-}
-
-.ErrorModalInner {
-  padding: 20px;
-  min-height: 150px;
-  width: 300px;
-  display: flex;
-  justify-content: center;
+  width: 90vw;
+  max-width: 400px;
 }

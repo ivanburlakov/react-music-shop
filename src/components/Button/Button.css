@@ -1,0 +1,33 @@
+.button {
+  display: block;
+  height: 60px;
+  width: 100px;
+	font-weight: 700;
+  font-size: 1rem;
+	border-radius: 25px;
+	position: relative;
+	overflow: hidden;
+	border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.buy {
+  align-self: flex-end;
+  height: 60px;
+  width: 100px;
+	font-weight: 700;
+  font-size: 1rem;
+  color: #FC8272;
+	border-radius: 25px;
+	position: absolute;
+  bottom: 16px;
+  right: 16px;
+	overflow: hidden;
+	border: 0;
+  outline: 0;
+  background-color: #FFDACD;
+  cursor: pointer;
+  margin: auto;
+  /* box-shadow: 0 5px 18px rgba(255, 218, 205, 0.9); */
+}

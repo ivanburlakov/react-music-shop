@@ -4,6 +4,8 @@ import { motion, AnimateSharedLayout } from 'framer-motion';
 
 import Panel from '../Panel/Panel';
 import Cart from '../Cart/Cart';
+import Modal from '../Modal/Modal';
+import Button from '../Button/Button';
 import FloatingButton from '../FloatingButton/FloatingButton';
 
 import './Navigation.css';
@@ -16,10 +18,17 @@ const spring = {
 };
 
 export default function Navigation({ scrollTarget }) {
-  // const { scrollY } = useViewportScroll();
-
   const [isPanel, setPanel] = useState(false);
+  const [isLoginModal, setModal] = useState(false);
+  const toggleLoginModal = () => setModal(!isLoginModal);
+  const [loginSwitch, setLoginSwitch] = useState('Login');
+  const toggleLoginSwitch = () => {
+    if (loginSwitch === 'Login') setLoginSwitch('Register');
+    else setLoginSwitch('Login');
+  };
   const togglePanel = () => setPanel(!isPanel);
+  const location = useLocation();
+  const [isVisible, setVisible] = useState(true);
   const menuItems = [
     {
       name: 'Home',
@@ -38,27 +47,21 @@ export default function Navigation({ scrollTarget }) {
       color: '#663399',
     },
   ];
-
-  const location = useLocation();
-  const [lastYPos, setLastYPos] = useState(0);
-  const [isVisible, setVisible] = useState(true);
+  window.lastYPos = 0;
 
   useEffect(() => {
+    setVisible(true);
     const target = scrollTarget || window;
     function handleScroll() {
       const yPos = scrollTarget ? target.scrollTop : target.scrollY;
-      const isScrollingUp = yPos < lastYPos;
+      const isScrollingUp = yPos < window.lastYPos || yPos === 0;
       setVisible(isScrollingUp);
-      setLastYPos(yPos);
+      window.lastYPos = yPos;
     }
     target.addEventListener('scroll', handleScroll, false);
     return () => {
       target.removeEventListener('scroll', handleScroll, false);
     };
-  }, [lastYPos, scrollTarget]);
-
-  useEffect(() => {
-    setVisible(true);
   }, [scrollTarget]);
 
   return (
@@ -75,10 +78,12 @@ export default function Navigation({ scrollTarget }) {
               isSelected={
                 location.pathname.split('/')[1] === item.name.toLowerCase()
               }
-              // isSelected={`/${item.name.toLowerCase()}` === location.pathname.match(new RegExp(`^/${item.name.toLowerCase()}`))}
             />
           ))}
         </AnimateSharedLayout>
+        <Button onClick={toggleLoginModal} style={{ margin: 'auto' }}>
+          Login
+        </Button>
         <Cart />
       </motion.nav>
       <Panel className="PanelOuter" isOpen={isPanel} onClose={togglePanel}>
@@ -94,11 +99,98 @@ export default function Navigation({ scrollTarget }) {
           />
         ))}
       </Panel>
-      <FloatingButton
-        scrollTarget={scrollTarget}
-        onClick={togglePanel}
-        isVisible={isVisible}
-      />
+      <FloatingButton onClick={togglePanel} isVisible={isVisible} />
+      <Modal isOpen={isLoginModal} onClose={toggleLoginModal}>
+        <div style={{ width: '400px', heigth: '400px' }} />
+        <div className="login-switch-place">
+          <div
+            className="login-switch-text-container-left"
+            role="button"
+            tabIndex={0}
+            onClick={toggleLoginSwitch}
+            onKeyDown={toggleLoginSwitch}
+          >
+            <span>Login</span>
+          </div>
+          <div
+            className="login-switch-text-container-right"
+            role="button"
+            tabIndex={0}
+            onClick={toggleLoginSwitch}
+            onKeyDown={toggleLoginSwitch}
+          >
+            <span>Register</span>
+          </div>
+          <motion.div
+            initial={{ left: loginSwitch === 'Login' ? 0 : '100px' }}
+            animate={{ left: loginSwitch === 'Login' ? 0 : '100px' }}
+            layout="position"
+            className="login-switch"
+          >
+            {loginSwitch}
+          </motion.div>
+        </div>
+        {loginSwitch === 'Login' ? (
+          <>
+            <input
+              type="text"
+              key="login-email"
+              name="login-email"
+              className="big-input"
+              placeholder="E-mail"
+            />
+            <input
+              type="password"
+              key="login-password"
+              name="login-password"
+              className="big-input"
+              placeholder="Password"
+            />
+            <Button
+              style={{
+                width: '200px',
+                margin: 'auto',
+                marginBottom: '17px',
+              }}
+            >
+              Login
+            </Button>
+          </>
+        ) : (
+          <>
+            <input
+              type="text"
+              key="register-email"
+              name="register-email"
+              className="big-input"
+              placeholder="E-mail"
+            />
+            <input
+              type="password"
+              key="register-password"
+              name="register-password"
+              className="big-input"
+              placeholder="Create Password"
+            />
+            <input
+              type="password"
+              key="confirm-password"
+              name="confirm-password"
+              className="big-input"
+              placeholder="Confirm Password"
+            />
+            <Button
+              style={{
+                width: '200px',
+                margin: 'auto',
+                marginBottom: '17px',
+              }}
+            >
+              Register
+            </Button>
+          </>
+        )}
+      </Modal>
     </>
   );
 }

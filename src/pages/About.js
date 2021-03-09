@@ -4,6 +4,7 @@ import Lottie from 'lottie-react';
 
 import SuccessLottie from '../assets/lotties/success.json';
 import ErrorLottie from '../assets/lotties/error.json';
+import './About.css';
 
 import Modal from '../components/Modal/Modal';
 

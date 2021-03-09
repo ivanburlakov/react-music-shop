@@ -1,0 +1,15 @@
+.SuccessModalInner {
+  padding: 20px;
+  min-height: 150px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.ErrorModalInner {
+  padding: 20px;
+  min-height: 150px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+}

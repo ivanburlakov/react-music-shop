@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=DM+Sans:400,500,600,700,800,900&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 input,
 textarea,
 button,
